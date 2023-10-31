@@ -16,7 +16,7 @@ description: ''
 
 #### The Journey of Googlebot
 
-![The journey the Googlebot makes to index webpages](image.png)
+![The journey the Googlebot makes to index webpages](/images/image.png)
 
 **Further Reading**
 
@@ -223,7 +223,7 @@ Documentation: [Valid indexing and serving rules](https://developers.google.com/
 
 #### Search Engine Results Page (SERP)
 
-![SERP snippet with a Title and Description](image-1.png)
+![SERP snippet with a Title and Description](/images/image-1.png)
 
 ```
 <title>iPhone 12 XS Max For Sale in Colorado - Big Discounts | Apple</title>
