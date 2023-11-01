@@ -1,6 +1,6 @@
 ---
 title: 'Search Engine Optimization (Reading)'
-date: '2022-01-01'
+date: '2023-10-31'
 description: ''
 ---
 

@@ -99,7 +99,7 @@ export default function Layout({ children, id }) {
         )}
       </header>
       {!Nav && (
-        <main className='flex-grow overflow-y-auto px-6'>
+        <main className='flex-grow overflow-y-auto px-6 py-10'>
           {Search && (
             <div className='text-neutral-500'>
               <div className='bg-white fixed top-[15%] left-[50%] -translate-x-[50%] z-20 w-[640px] rounded-xl shadow-box'>
