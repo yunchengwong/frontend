@@ -1,10 +1,44 @@
 ---
-title: 'Search Engine Optimization'
+title: 'Search Engine Optimization (Reading)'
 date: '2022-01-01'
 description: ''
 ---
 
+- Introduction to SEO
+  - Three Pillars of Optimization
+  - The Journey of Googlebot
+- Crawling and Indexing
+  - 301/308
+  - 404
+  - 500
+  - robots.txt
+  - XML Sitemaps
+    - Manual
+    - getServerSideProps
+  - Meta Tags
+    - Meta robots tags
+    - Canonical tags
+- Rendering and Ranking
+  - URL Structure
+  - Metadata
+    - Search Engine Results Page (SERP)
+    - Open Graph Protocol
+    - Stuctured Data with JSON-LD Encoding
+  - On Page SEO - next/link
+- Performance & Core Web Vitals
+  - Lighthouse (v6) Weights for Vitals
+- Improving your Core Web Vitals
+  - Lighthouse
+  - Optimization (CLS) with next/image
+  - Optimization (CLS) with next/script
+  - Optimization (FID) with JS Dynamic Imports
+  - Optimization (FID) with React Dynamic Imports
+  - Optimization (LCP) with NextJS
+
 ## Introduction to SEO
+
+- Three Pillars of Optimization
+- The Journey of Googlebot
 
 #### Three Pillars of Optimization
 
@@ -16,7 +50,7 @@ description: ''
 
 #### The Journey of Googlebot
 
-![The journey the Googlebot makes to index webpages](/images/image.png)
+![The journey the Googlebot makes to index webpages](/images/Googlebot.png)
 
 **Further Reading**
 
@@ -24,7 +58,14 @@ description: ''
 
 - [MDN: User-Agents](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent)
 
-# Crawling and Indexing
+## Crawling and Indexing
+
+- 301/308
+- 404
+- 500
+- robots.txt
+- XML Sitemaps
+- Meta Tags
 
 #### 301/308
 
@@ -83,7 +124,7 @@ export default function Custom500() {
 }
 ```
 
-## robots.txt
+#### robots.txt
 
 ```
 //public/robots.txt
@@ -101,9 +142,12 @@ Further Reading
 
 - [Create and Submit a robots.txt File](https://developers.google.com/search/docs/advanced/robots/create-robots-txt)
 
-## XML Sitemaps
+#### XML Sitemaps
 
-#### Manual
+- Manual
+- getServerSideProps
+
+###### Manual
 
 ```
 <!-- public/sitemap.xml -->
@@ -118,7 +162,7 @@ Further Reading
 </xml>
 ```
 
-#### getServerSideProps
+###### getServerSideProps
 
 ```
 //pages/sitemap.xml.js
@@ -178,9 +222,12 @@ export default SiteMap;
 - [Learn about Sitemaps](https://developers.google.com/search/docs/advanced/sitemaps/overview)
 - [Overview of crawling and indexing topics](https://developers.google.com/search/docs/crawling-indexing)
 
-## Meta Tags
+#### Meta Tags
 
-#### Meta robots tags || robots.txt || Directives tags
+- Meta robots tags || robots.txt || Directives tags
+- Canonical tags
+
+###### Meta robots tags || robots.txt || Directives tags
 
 ```
 <meta name="robots" content="all" />
@@ -188,7 +235,7 @@ export default SiteMap;
 
 Documentation: [Valid indexing and serving rules](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives)
 
-#### Canonical tags
+###### Canonical tags
 
 ```
 <link rel="canonical" href="https://example.com/products/phone" />
@@ -212,6 +259,10 @@ Documentation: [Valid indexing and serving rules](https://developers.google.com/
   - On initial page load a single HTML file is generally served with little to no content until you fetch the JavaScript and the browser compiles everything.
   - **Not** recommended for optimal SEO
 
+- URL Structure
+- Metadata
+- On Page SEO - next/link
+
 #### URL Structure
 
 - Semantic
@@ -219,11 +270,15 @@ Documentation: [Valid indexing and serving rules](https://developers.google.com/
 - Keyword focused
 - Not parameter-based
 
-## Metadata
+#### Metadata
 
-#### Search Engine Results Page (SERP)
+- Search Engine Results Page (SERP)
+- Open Graph Protocol
+- Stuctured Data with JSON-LD Encoding
 
-![SERP snippet with a Title and Description](/images/image-1.png)
+###### Search Engine Results Page (SERP)
+
+![SERP snippet with a Title and Description](/images/SERP.png)
 
 ```
 <title>iPhone 12 XS Max For Sale in Colorado - Big Discounts | Apple</title>
@@ -233,7 +288,7 @@ Documentation: [Valid indexing and serving rules](https://developers.google.com/
 />
 ```
 
-#### [Open Graph Protocol](https://ogp.me/) for Social Media
+###### [Open Graph Protocol](https://ogp.me/) for Social Media
 
 ```
 <meta property="og:title" content="Social Title for Cool Page" />
@@ -247,7 +302,7 @@ Documentation: [Valid indexing and serving rules](https://developers.google.com/
 />
 ```
 
-#### [Stuctured Data with JSON-LD Encoding](https://schema.org/)
+###### [Stuctured Data with JSON-LD Encoding](https://schema.org/)
 
 ```
 import Head from 'next/head';
@@ -331,9 +386,7 @@ export default ProductPage;
 - [Product Structured Data](https://developers.google.com/search/docs/data-types/product)
 - [Rich Results Tester](https://search.google.com/test/rich-results)
 
-## On Page SEO
-
-#### next/link
+#### On Page SEO - next/link
 
 If the child of Link is a custom component that wraps an a tag, you must add **`passHref`** to Link. This is necessary if you’re using libraries like styled-components. Without this, the a tag will not have the href attribute, which affects your site’s SEO.
 
@@ -358,4 +411,180 @@ function NavLink({ href, name }) {
 export default NavLink;
 ```
 
-## Web Performance & Core Web Vitals
+## Performance & Core Web Vitals
+
+Core Web Vitals consists of three metrics that measure loading, interactivity, and visual stability.
+
+1. Largest Contentful Paint (LCP)
+
+![LCP](/images/LCD.png)
+
+LCP shows how long it takes for the largest element to be loaded and visible for users.
+
+2. First Input Delay (FID)
+
+![FID](/images/FID.png)
+
+FID happens when the browser’s main thread is performing other tasks and is unable to respond to the user’s request.
+
+FID requires real user data and cannot be measured in the lab (e.g. Google Lighthouse). However, the **Total Blocking Time (TBT)** metric is lab-measurable and captures issues that affect interactivity.
+
+3. Cumulative Layout Shift (CLS)
+
+![CLS](/images/CLS.png)
+
+Elements that shift position when new elements render to screen affect CLS.
+
+#### Lighthouse (v6) Weights for Vitals
+
+- Largest Contentful Paint: 25%
+- Total Blocking Time: 25%
+- First Contentful Paint: 15%
+- Speed Index: 15%
+- Time to Interactive: 15%
+- Cumulative Layout Shift: 5%
+
+## Improving your Core Web Vitals
+
+- Lighthouse
+- Optimization (CLS) with next/image
+- Optimization (CLS) with next/script
+- Optimization (FID) with JS Dynamic Imports
+- Optimization (FID) with React Dynamic Imports
+- Optimization (LCP) with NextJS
+
+#### Lighthouse
+
+Lighthouse works by running a series of audits on a provided URL. Based on these audits, it generates a report on how well the page performed.
+
+![Lighthouse report](images/Lighthouse.png)
+
+#### Optimization (CLS) with next/image
+
+- Size Optimization: Automatically serve correctly sized images for each device, using modern image formats like **WebP** and AVIF.
+
+- Visual Stability: Prevent layout shift **(CLS)** automatically when images are loading.
+
+- Faster Page Loads: Images are only loaded when they enter the viewport using native browser **lazy loading**, with optional blur-up placeholders.
+
+- Asset Flexibility: **On-demand** image resizing, even for images stored on remote servers
+
+**Further Reading**
+
+- [Automatic Image Optimization Documentation](https://nextjs.org/docs/pages/building-your-application/optimizing/images)
+
+#### Optimization (CLS) with next/script
+
+```
+// Before
+
+<Head>
+  <script src="https://www.googletagmanager.com/gtag/js?id=123" />
+</Head>
+```
+
+```
+// After
+
+<Script
+  strategy="afterInteractive"
+  src="https://www.googletagmanager.com/gtag/js?id=123"
+/>
+```
+
+**Further Reading**
+
+- [Script Component](https://nextjs.org/docs/basic-features/script)
+- [API Reference for next/script](https://nextjs.org/docs/api-reference/next/script)
+
+#### Optimization (FID) with JS Dynamic Imports
+
+
+```
+// Before
+
+import Fuse from 'fuse.js';
+import _ from 'lodash';
+
+const fuse = new Fuse(countries, {
+  keys: ['name'],
+  threshold: 0.3,
+});
+```
+
+```
+// After
+
+const Fuse = (await import('fuse.js')).default;
+const _ = (await import('lodash')).default;
+
+const fuse = new Fuse(countries, {
+  keys: ['name'],
+  threshold: 0.3,
+});
+```
+
+#### Optimization (FID) with React Dynamic Imports
+
+```
+// Before
+
+import CodeSampleModal from '../components/CodeSampleModal';
+```
+
+```
+// After
+
+import dynamic from 'next/dynamic';
+const CodeSampleModal = dynamic(() => import('../components/CodeSampleModal'), {
+  ssr: false, 
+});
+```
+
+Next, we want to defer the loading of this component until it's required by the user. To do this, we can wrap the component in a conditional that checks if the modal should be open, and if so, it will be loaded.
+
+```
+{
+  isModalOpen && (
+    <CodeSampleModal
+      isOpen={isModalOpen}
+      closeModal={() => setIsModalOpen(false)}
+    />
+  );
+}
+```
+
+**Further Reading**
+
+- [Dynamic Imports Documentation](https://nextjs.org/docs/advanced-features/dynamic-import)
+
+#### Optimization (LCP) with NextJS
+
+Next.js has built-in Automatic Webfont Optimization.
+
+```
+// Before
+
+<link href="https://fonts.googleapis.com/css2?family=Inter" rel="stylesheet" />
+```
+
+```
+// After
+
+<style data-href="https://fonts.googleapis.com/css2?family=Inter">
+  @font-face{font-family:'Inter';font-style:normal.....
+</style>
+```
+
+## Monitoring your Core Web Vitals
+
+#### Tools
+
+- [Next.js Speed Insights](https://nextjs.org/analytics)
+- [Google Data Studio (Chrome User Experience Report)](https://developers.google.com/web/tools/chrome-user-experience-report)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse?hl%253Den)
+
+**Further Reading**
+
+- [Next.js Custom Reporting](https://nextjs.org/docs/advanced-features/measuring-performance)
+- [Google Data Studio Example Dashboard](https://web.dev/chrome-ux-report-data-studio-dashboard/)
